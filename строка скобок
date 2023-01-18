@@ -1,0 +1,56 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Скобочное_выражение
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            char leftBracket = '(' ;
+            char rightBracket =  ')';
+            string charString;
+            int depth = 0;
+            int maxDepth = 0;
+            Console.WriteLine("Введите скобочное выражение");
+            charString = Console.ReadLine();
+
+            foreach (var symbol in charString)
+            {
+                if (symbol == leftBracket)
+                {
+                    depth++;
+
+                    if (depth > maxDepth)
+                    {
+                        maxDepth = depth;
+                    }  
+                }
+                else if (symbol == rightBracket)
+                {
+                    depth--;
+                }
+
+                if (depth < 0)
+                {
+                    break;
+                }
+            }
+
+            if (depth == 0)
+            {
+                Console.WriteLine(" Строка - " + charString + "корректна . Глубина " + maxDepth );
+
+                Console.ReadKey();
+            }
+            else
+            {
+                Console.WriteLine("Строка неккоректна.");
+            }
+            Console.ReadKey();          
+        }
+    }
+}
